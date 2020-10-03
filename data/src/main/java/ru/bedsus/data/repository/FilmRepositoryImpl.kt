@@ -12,7 +12,11 @@ class FilmRepositoryImpl(
 ) : FilmRepository {
 
     override fun getPopularFilmList(): Single<List<Film>> {
-        return service.getPopularFilms("")
+        return service.getPopularFilms(API_KEY)
             .map { (it.results ?: listOf()).map(mapper::toModel) }
+    }
+
+    private companion object {
+        const val API_KEY = "befc7872520fd736c58948abb2f4a53c"
     }
 }

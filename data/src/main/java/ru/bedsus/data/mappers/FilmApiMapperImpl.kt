@@ -13,11 +13,14 @@ class FilmApiMapperImpl : FilmModelMapper<FilmApi, Film> {
                 releaseDate = releaseDate ?: "",
                 popularity = popularity ?: 0f,
                 voteCount = voteCount ?: 0,
-                posterPath = posterPath ?: "",
+                posterPath = IMAGE_API_URL + (posterPath ?: ""),
                 backdropPath = backdropPath ?: "",
                 voteAverage = voteAverage ?: 0f,
                 overview = overview ?: ""
             )
         }
+    }
+    companion object {
+        const val IMAGE_API_URL = "https://image.tmdb.org/t/p/w500"
     }
 }
