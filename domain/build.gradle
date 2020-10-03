@@ -1,0 +1,17 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // RxJava and RxAndroid
+    implementation libs.rxJava
+    implementation libs.rxAndroid
+
+    // JUnit
+    testImplementation libs.junit
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
