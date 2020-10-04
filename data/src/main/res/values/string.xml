@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nameDB">localDB</string>
+    <string name="apiKey">befc7872520fd736c58948abb2f4a53c</string>
+    <string name="imageApiUrl">https://image.tmdb.org/t/p/w500</string>
+    <string name="baseUrl">http://api.themoviedb.org/3/</string>
+</resources>

@@ -1,4 +1,4 @@
-package ru.bedsus.data.models
+package ru.bedsus.data.network.models
 
 import com.google.gson.annotations.SerializedName
 

@@ -5,9 +5,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.bedsus.data.resource.DataResource
 import java.util.concurrent.TimeUnit
 
-class NetworkService {
+class NetworkService(resource: DataResource) {
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -21,7 +22,7 @@ class NetworkService {
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .baseUrl(BASE_URL)
+        .baseUrl(resource.baseUrl)
 
     private val retrofit: Retrofit = retrofitBuilder.client(httpClientBuilder.build())
         .build()
@@ -29,7 +30,6 @@ class NetworkService {
     fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
 
     private companion object {
-        private const val BASE_URL = "http://api.themoviedb.org/3/"
         private const val READ_TIMEOUT_SEC = 30L
         private const val CONNECT_TIMEOUT_SEC = 10L
     }

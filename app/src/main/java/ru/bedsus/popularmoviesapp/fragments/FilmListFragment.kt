@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_film_list.view.*
@@ -26,16 +27,21 @@ class FilmListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_film_list, container, false)
+        view.vSwipeRefresher.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorAccent))
+        view.vSwipeRefresher.setOnRefreshListener {
+            viewModel.loadPopularFilms()
+        }
         adapter = FilmListAdapter()
         view.vFilmList.layoutManager = LinearLayoutManager(context)
         view.vFilmList.adapter = adapter
         viewModel.filmsLiveData.observe(viewLifecycleOwner) {
-           when (it) {
-               is ResultRequest.Success -> adapter.submitList(it.data)
-               is ResultRequest.Error -> {
+            view.vSwipeRefresher.isRefreshing = false
+            when (it) {
+                is ResultRequest.Success -> adapter.submitList(it.data)
+                is ResultRequest.Error -> {
                    Timber.e(it.throwable)
-               }
-               ResultRequest.Loading -> {}
+                }
+                ResultRequest.Loading -> view.vSwipeRefresher.isRefreshing = true
            }
         }
         return view
