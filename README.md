@@ -4,8 +4,7 @@
 Приложение, которое отображает популярные фильмы. 
 Приложение имеет два экрана - список фильмов и информация о фильме.
 
-![Film List](https://github.com/Bedsus/PopularMoviesApp/blob/master/pich/film_list.png) ![Film Info](https://github.com/Bedsus/PopularMoviesApp/blob/master/pich/film_info.png)
-
+<img src="https://github.com/Bedsus/PopularMoviesApp/blob/master/pich/film_list.png" width="400" height="800"/>  <img src="https://github.com/Bedsus/PopularMoviesApp/blob/master/pich/film_info.png" width="400" height="800"/>
 ### Основные характеристики приложения:
 * Минимальная версия SDK: 21 (5.0)
 * Язык разработки: [Kotlin 1.4.10](https://kotlinlang.org/)
