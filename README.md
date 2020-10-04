@@ -4,7 +4,7 @@
 Приложение, которое отображает популярные фильмы. 
 Приложение имеет два экрана - список фильмов и информация о фильме.
 
-![Film List](https://github.com/Bedsus/PopularMoviesApp/tree/master/film_list.png) ![Film Info](https://github.com/Bedsus/PopularMoviesApp/tree/master/film_info.png)
+![Film List](https://github.com/Bedsus/PopularMoviesApp/blob/master/pich/film_list.png) ![Film Info](https://github.com/Bedsus/PopularMoviesApp/blob/master/pich/film_info.png)
 
 ### Основные характеристики приложения:
 * Минимальная версия SDK: 21 (5.0)
