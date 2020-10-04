@@ -1,23 +1,23 @@
 # Popular Movies App
 ============================================
 
-Приложение, которое отображает популярные фильмы. 
-Приложение имеет два экрана - список фильмов и информация о фильме.
+РџСЂРёР»РѕР¶РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РїРѕРїСѓР»СЏСЂРЅС‹Рµ С„РёР»СЊРјС‹. 
+РџСЂРёР»РѕР¶РµРЅРёРµ РёРјРµРµС‚ РґРІР° СЌРєСЂР°РЅР° - СЃРїРёСЃРѕРє С„РёР»СЊРјРѕРІ Рё РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С„РёР»СЊРјРµ.
 
-![Film List](https://github.com/Bedsus/PopularMoviesApp/film_list.png) ![Film Info](https://github.com/Bedsus/PopularMoviesApp/film_info.png)
+![Film List](https://github.com/Bedsus/PopularMoviesApp/tree/master/film_list.png) ![Film Info](https://github.com/Bedsus/PopularMoviesApp/tree/master/film_info.png)
 
-### Основные характеристики приложения:
-* Минимальная версия SDK: 21 (5.0)
-* Язык разработки: [Kotlin 1.4.10](https://kotlinlang.org/)
-* Сборка проекта: [Gradle 4.0.1](https://gradle.org/)
-* Среда разработки: [Android Studio 4.0.1](https://developer.android.com/studio)
-* Архитектура: Clean Architecture + Single Activity + MVVM+R
-* Разрешения: Интернет
+### РћСЃРЅРѕРІРЅС‹Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РїСЂРёР»РѕР¶РµРЅРёСЏ:
+* РњРёРЅРёРјР°Р»СЊРЅР°СЏ РІРµСЂСЃРёСЏ SDK: 21 (5.0)
+* РЇР·С‹Рє СЂР°Р·СЂР°Р±РѕС‚РєРё: [Kotlin 1.4.10](https://kotlinlang.org/)
+* РЎР±РѕСЂРєР° РїСЂРѕРµРєС‚Р°: [Gradle 4.0.1](https://gradle.org/)
+* РЎСЂРµРґР° СЂР°Р·СЂР°Р±РѕС‚РєРё: [Android Studio 4.0.1](https://developer.android.com/studio)
+* РђСЂС…РёС‚РµРєС‚СѓСЂР°: Clean Architecture + Single Activity + MVVM+R
+* Р Р°Р·СЂРµС€РµРЅРёСЏ: РРЅС‚РµСЂРЅРµС‚
 
-### Используемые библиотеки:
-* [Retrofit2](https://github.com/square/retrofit) - для сетевых запросов
-* [Koin](https://github.com/InsertKoinIO/koin) - внедрение зависимостей
-* [RxJava2](https://github.com/ReactiveX/RxJava) - реактивное программирование
-* [Picasso](https://github.com/square/picasso) - работа с изображениями
-* [Room](https://developer.android.com/jetpack/androidx/releases/room) - обёртка для работы с SQLite
-* [JUnit5](https://github.com/mannodermaus/android-junit5), [Mockito](https://github.com/mockito/mockito) - тестирование приложения
+### РСЃРїРѕР»СЊР·СѓРµРјС‹Рµ Р±РёР±Р»РёРѕС‚РµРєРё:
+* [Retrofit2](https://github.com/square/retrofit) - РґР»СЏ СЃРµС‚РµРІС‹С… Р·Р°РїСЂРѕСЃРѕРІ
+* [Koin](https://github.com/InsertKoinIO/koin) - РІРЅРµРґСЂРµРЅРёРµ Р·Р°РІРёСЃРёРјРѕСЃС‚РµР№
+* [RxJava2](https://github.com/ReactiveX/RxJava) - СЂРµР°РєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ
+* [Picasso](https://github.com/square/picasso) - СЂР°Р±РѕС‚Р° СЃ РёР·РѕР±СЂР°Р¶РµРЅРёСЏРјРё
+* [Room](https://developer.android.com/jetpack/androidx/releases/room) - РѕР±С‘СЂС‚РєР° РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ SQLite
+* [JUnit5](https://github.com/mannodermaus/android-junit5), [Mockito](https://github.com/mockito/mockito) - С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РїСЂРёР»РѕР¶РµРЅРёСЏ
