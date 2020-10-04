@@ -12,6 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.bedsus.popularmoviesapp.R
 import ru.bedsus.popularmoviesapp.ResultRequest
 import ru.bedsus.popularmoviesapp.adapter.FilmListAdapter
+import ru.bedsus.popularmoviesapp.fragments.FilmInfoFragment.Companion.FILM_ID_TAG
 import ru.bedsus.popularmoviesapp.vm.FilmViewModel
 import timber.log.Timber
 
@@ -32,6 +33,7 @@ class FilmListFragment : Fragment() {
             viewModel.loadPopularFilms()
         }
         adapter = FilmListAdapter()
+        adapter.filmClick = FilmListAdapter.FilmClick { showFilmInfo(it.id) }
         view.vFilmList.layoutManager = LinearLayoutManager(context)
         view.vFilmList.adapter = adapter
         viewModel.filmsLiveData.observe(viewLifecycleOwner) {
@@ -49,5 +51,16 @@ class FilmListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.loadPopularFilms()
+    }
+
+    private fun showFilmInfo(filmId: Int) {
+        val bundle = Bundle()
+        bundle.putInt(FILM_ID_TAG, filmId)
+        val fragment = FilmInfoFragment()
+        fragment.arguments = bundle
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.vContainerFragment, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

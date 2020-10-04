@@ -11,6 +11,10 @@ class FilmCacheRepositoryImpl(
     private val dao: FilmDao
 ) : FilmCacheRepository {
 
+    override fun getFilmInfoById(id: Int): Maybe<Film> {
+        return dao.getById(id).map { it.fromEntity() }
+    }
+
     override fun getPopularFilmList(): Maybe<List<Film>> {
         return dao.getAllFilms().map { films ->
             films.map { it.fromEntity() }

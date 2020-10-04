@@ -13,6 +13,11 @@ class FilmsUserCase(
     private val cacheTimeManager: CacheTimeRepository
 ) {
 
+    fun getFilmInfoById(id: Int): Single<Film> {
+        return cacheRepository.getFilmInfoById(id)
+            .toSingle()
+    }
+
     /**
      * Получение списка популярных фильмов:
      * 1. Получаем список из кеша. При его отсутствии генерируется ошибка

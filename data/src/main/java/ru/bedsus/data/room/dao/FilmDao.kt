@@ -11,7 +11,7 @@ import ru.bedsus.data.room.model.FilmEntity
 interface FilmDao {
 
     @Query("SELECT * FROM popularFilm WHERE id = :id")
-    fun getById(id: Long): Maybe<FilmEntity>
+    fun getById(id: Int): Maybe<FilmEntity>
 
     @Query("SELECT * FROM popularFilm")
     fun getAllFilms(): Maybe<List<FilmEntity>>

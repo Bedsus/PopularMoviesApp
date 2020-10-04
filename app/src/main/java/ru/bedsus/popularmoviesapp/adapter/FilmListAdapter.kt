@@ -9,8 +9,11 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_film_item.view.*
 import ru.bedsus.domain.model.Film
 import ru.bedsus.popularmoviesapp.R
+import ru.bedsus.popularmoviesapp.adapter.FilmListAdapter.FilmClick
 
 class FilmListAdapter : ListAdapter<Film, FilmListAdapter.ViewHolder>(FilmDiffUtils) {
+
+    var filmClick = FilmClick { }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -19,7 +22,11 @@ class FilmListAdapter : ListAdapter<Film, FilmListAdapter.ViewHolder>(FilmDiffUt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+        holder.bind(item)
+        holder.itemView.setOnClickListener {
+            filmClick.onClick(item)
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,5 +37,9 @@ class FilmListAdapter : ListAdapter<Film, FilmListAdapter.ViewHolder>(FilmDiffUt
                 .fit()
                 .into(itemView.vFilmImage)
         }
+    }
+
+    fun interface FilmClick {
+        fun onClick(film: Film)
     }
 }

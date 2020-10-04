@@ -20,6 +20,10 @@ class FilmViewModel(
     val filmsLiveData: LiveData<ResultRequest<List<Film>>>
         get() = _filmsLiveData
 
+    private val _filmInfoLiveData = MutableLiveData<ResultRequest<Film>>()
+    val filmInfoLiveData: LiveData<ResultRequest<Film>>
+        get() = _filmInfoLiveData
+
     fun loadPopularFilms() {
         _filmsLiveData.value = ResultRequest.Loading
         compositeDisposable.add(
@@ -30,6 +34,20 @@ class FilmViewModel(
                     _filmsLiveData.value = ResultRequest.Success(it)
                 }, {
                     _filmsLiveData.value = ResultRequest.Error(it)
+                })
+        )
+    }
+
+    fun loadFilmInfoById(id: Int) {
+        _filmInfoLiveData.value = ResultRequest.Loading
+        compositeDisposable.add(
+            userCase.getFilmInfoById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _filmInfoLiveData.value = ResultRequest.Success(it)
+                }, {
+                    _filmInfoLiveData.value = ResultRequest.Error(it)
                 })
         )
     }
