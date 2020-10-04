@@ -13,6 +13,5 @@ class DatabaseManager(
         applicationContext,
         AppDatabase::class.java,
         resource.nameDatabase
-    ).allowMainThreadQueries()
-        .build()
+    ).build()
 }

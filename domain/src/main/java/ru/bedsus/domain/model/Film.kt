@@ -1,5 +1,8 @@
 package ru.bedsus.domain.model
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 data class Film(
     val id: Int,
     val title: String,
@@ -10,4 +13,15 @@ data class Film(
     val backdropPath: String,
     val voteAverage: Float,
     val overview: String
-)
+) {
+
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+    val year: String
+        get() {
+            val date = dateFormat.parse(releaseDate)
+            val calendar = Calendar.getInstance()
+            calendar.time = date
+            return "(${calendar.get(Calendar.YEAR)})"
+        }
+}

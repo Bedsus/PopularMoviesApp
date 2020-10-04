@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_film_list.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.bedsus.domain.model.Film
 import ru.bedsus.popularmoviesapp.R
 import ru.bedsus.popularmoviesapp.ResultRequest
 import ru.bedsus.popularmoviesapp.adapter.FilmListAdapter
@@ -28,13 +31,15 @@ class FilmListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_film_list, container, false)
+        (activity as AppCompatActivity).setSupportActionBar(view.vToolbar)
         view.vSwipeRefresher.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorAccent))
         view.vSwipeRefresher.setOnRefreshListener {
             viewModel.loadPopularFilms()
         }
         adapter = FilmListAdapter()
-        adapter.filmClick = FilmListAdapter.FilmClick { showFilmInfo(it.id) }
+        adapter.filmClick = FilmListAdapter.FilmClick { showFilmInfo(it) }
         view.vFilmList.layoutManager = LinearLayoutManager(context)
+        view.vFilmList.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
         view.vFilmList.adapter = adapter
         viewModel.filmsLiveData.observe(viewLifecycleOwner) {
             view.vSwipeRefresher.isRefreshing = false
@@ -53,14 +58,19 @@ class FilmListFragment : Fragment() {
         viewModel.loadPopularFilms()
     }
 
-    private fun showFilmInfo(filmId: Int) {
+    private fun showFilmInfo(film: Film) {
         val bundle = Bundle()
-        bundle.putInt(FILM_ID_TAG, filmId)
+        bundle.putInt(FILM_ID_TAG, film.id)
         val fragment = FilmInfoFragment()
         fragment.arguments = bundle
         parentFragmentManager.beginTransaction()
             .replace(R.id.vContainerFragment, fragment)
             .addToBackStack(null)
             .commit()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as AppCompatActivity).setSupportActionBar(null)
     }
 }

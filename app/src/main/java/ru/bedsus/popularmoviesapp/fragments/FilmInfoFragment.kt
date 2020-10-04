@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_film_info.*
+import kotlinx.android.synthetic.main.fragment_film_info.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.bedsus.domain.model.Film
 import ru.bedsus.popularmoviesapp.R
 import ru.bedsus.popularmoviesapp.ResultRequest
 import ru.bedsus.popularmoviesapp.vm.FilmViewModel
 import timber.log.Timber
+
 
 class FilmInfoFragment : Fragment() {
 
@@ -23,7 +26,10 @@ class FilmInfoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_film_info, container, false)
+        val view = inflater.inflate(R.layout.fragment_film_info, container, false)
+        (activity as AppCompatActivity).setSupportActionBar(view.vToolbar)
+        view.vToolbar.setNavigationOnClickListener { activity?.onBackPressed() }
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,11 +49,25 @@ class FilmInfoFragment : Fragment() {
     }
 
     private fun showFilmInfo(film: Film) {
+        vCollapsingToolbar.title = film.title
+        Picasso.get()
+            .load(film.backdropPath)
+            .into(vBackgroundImage)
         vFilmName.text = film.title
         Picasso.get()
             .load(film.posterPath)
             .fit()
             .into(vFilmImage)
+        vFilmYear.text = film.year
+        vRatingBar.rating = film.voteAverage
+        vRatingText.text = film.voteAverage.toString()
+        vOverviewText.text = film.overview
+        vBaseLayout.visibility = View.VISIBLE
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as AppCompatActivity).setSupportActionBar(null)
     }
 
     companion object {

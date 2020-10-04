@@ -12,7 +12,7 @@ fun FilmApi.toModel(resource: DataResource): Film {
         popularity = popularity ?: 0f,
         voteCount = voteCount ?: 0,
         posterPath = resource.imageApiUrl + (posterPath ?: ""),
-        backdropPath = backdropPath ?: "",
+        backdropPath = resource.imageApiUrl + (backdropPath ?: ""),
         voteAverage = voteAverage ?: 0f,
         overview = overview ?: ""
     )
