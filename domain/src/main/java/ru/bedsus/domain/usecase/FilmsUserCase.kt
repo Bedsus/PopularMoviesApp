@@ -31,7 +31,7 @@ class FilmsUserCase(
             .toSingle()
             .doOnSuccess {
                 if (isCacheDateExpired()) {
-                    throw IllegalStateException(CACHE_DATA_EXPIRED)
+                    throw IllegalStateException("Cache expired!")
                 }
             }
             .onErrorResumeNext {
@@ -48,9 +48,5 @@ class FilmsUserCase(
         val currentTime = System.currentTimeMillis()
         val lastSaveTime = cacheTimeManager.lastSaveTimeToCache
         return currentTime - lastSaveTime > TimeUnit.HOURS.toMillis(2)
-    }
-
-    companion object {
-        const val CACHE_DATA_EXPIRED = "Кеш устарел!"
     }
 }

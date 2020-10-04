@@ -34,7 +34,7 @@ class FilmInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val filmId = arguments?.getInt(FILM_ID_TAG) ?:
-            throw IllegalStateException("Номер фильма не пепредан!")
+            throw IllegalStateException("Not found film id!")
         viewModel.filmInfoLiveData.observe(viewLifecycleOwner) {
             vProgressBar.hide()
             when (it) {
@@ -62,7 +62,7 @@ class FilmInfoFragment : Fragment() {
         vRatingBar.rating = film.voteAverage
         vRatingText.text = film.voteAverage.toString()
         vOverviewText.text = film.overview
-        vBaseLayout.visibility = View.VISIBLE
+        vGenresText.text = film.genres
     }
 
     override fun onDestroyView() {

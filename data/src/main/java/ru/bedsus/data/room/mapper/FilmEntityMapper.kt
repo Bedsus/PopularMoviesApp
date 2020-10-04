@@ -13,7 +13,8 @@ fun FilmEntity.fromEntity(): Film {
         posterPath = posterPath,
         backdropPath = backdropPath,
         voteAverage = voteAverage,
-        overview = overview
+        overview = overview,
+        genres = genres
     )
 }
 
@@ -27,6 +28,7 @@ fun Film.toEntity(): FilmEntity {
         posterPath = posterPath,
         backdropPath = backdropPath,
         voteAverage = voteAverage,
-        overview = overview
+        overview = overview,
+        genres = genres
     )
 }

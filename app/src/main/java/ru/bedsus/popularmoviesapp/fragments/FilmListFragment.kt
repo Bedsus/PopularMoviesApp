@@ -32,7 +32,7 @@ class FilmListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_film_list, container, false)
         (activity as AppCompatActivity).setSupportActionBar(view.vToolbar)
-        view.vSwipeRefresher.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorAccent))
+        view.vSwipeRefresher.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorSecondary))
         view.vSwipeRefresher.setOnRefreshListener {
             viewModel.loadPopularFilms()
         }
@@ -64,7 +64,7 @@ class FilmListFragment : Fragment() {
         val fragment = FilmInfoFragment()
         fragment.arguments = bundle
         parentFragmentManager.beginTransaction()
-            .replace(R.id.vContainerFragment, fragment)
+            .add(R.id.vContainerFragment, fragment)
             .addToBackStack(null)
             .commit()
     }

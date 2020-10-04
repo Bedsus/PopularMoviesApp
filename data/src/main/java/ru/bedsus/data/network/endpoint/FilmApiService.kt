@@ -4,6 +4,7 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.bedsus.data.network.models.FilmsInfoApi
+import ru.bedsus.data.network.models.GenreInfoApi
 
 interface FilmApiService {
 
@@ -11,4 +12,9 @@ interface FilmApiService {
     fun getPopularFilms(
         @Query("api_key") apiKey: String
     ): Single<FilmsInfoApi>
+
+    @GET("genre/movie/list")
+    fun getGenreList(
+        @Query("api_key") apiKey: String
+    ): Single<GenreInfoApi>
 }

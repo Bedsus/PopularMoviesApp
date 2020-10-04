@@ -12,7 +12,8 @@ data class Film(
     val posterPath: String,
     val backdropPath: String,
     val voteAverage: Float,
-    val overview: String
+    val overview: String,
+    val genres: String
 ) {
 
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())

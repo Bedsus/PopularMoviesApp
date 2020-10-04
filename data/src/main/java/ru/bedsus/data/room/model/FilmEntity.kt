@@ -33,5 +33,8 @@ open class FilmEntity(
     val voteAverage: Float,
 
     @ColumnInfo(name = "overview")
-    val overview: String
+    val overview: String,
+
+    @ColumnInfo(name = "genres")
+    val genres: String
 )

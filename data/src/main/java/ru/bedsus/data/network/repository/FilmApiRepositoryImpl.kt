@@ -13,7 +13,12 @@ class FilmApiRepositoryImpl(
 ) : FilmApiRepository {
 
     override fun getPopularFilmList(): Single<List<Film>> {
-        return service.getPopularFilms(resource.apiKet)
-            .map { films -> (films.results ?: listOf()).map { it.toModel(resource) } }
+        return service.getGenreList(resource.apiKet).map { genreList ->
+            (genreList.genres ?: listOf()).map { it.toModel() }
+                .map { it.id to it.name }
+                .toMap()
+        }.zipWith(service.getPopularFilms(resource.apiKet)) { genreMap, films ->
+            (films.results ?: listOf()).map { it.toModel(resource, genreMap) }
+        }
     }
 }
