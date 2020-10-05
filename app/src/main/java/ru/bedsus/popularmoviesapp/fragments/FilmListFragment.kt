@@ -45,9 +45,7 @@ class FilmListFragment : Fragment() {
             view.vSwipeRefresher.isRefreshing = false
             when (it) {
                 is ResultRequest.Success -> adapter.submitList(it.data)
-                is ResultRequest.Error -> {
-                   Timber.e(it.throwable)
-                }
+                is ResultRequest.Error -> Timber.e(it.throwable)
                 ResultRequest.Loading -> view.vSwipeRefresher.isRefreshing = true
            }
         }

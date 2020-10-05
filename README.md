@@ -19,4 +19,3 @@
 * [RxJava2](https://github.com/ReactiveX/RxJava) - реактивное программирование
 * [Picasso](https://github.com/square/picasso) - работа с изображениями
 * [Room](https://developer.android.com/jetpack/androidx/releases/room) - обёртка для работы с SQLite
-* [JUnit5](https://github.com/mannodermaus/android-junit5), [Mockito](https://github.com/mockito/mockito) - тестирование приложения

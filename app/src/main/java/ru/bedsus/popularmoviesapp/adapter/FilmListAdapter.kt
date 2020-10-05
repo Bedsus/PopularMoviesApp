@@ -34,6 +34,7 @@ class FilmListAdapter : ListAdapter<Film, FilmListAdapter.ViewHolder>(FilmDiffUt
             itemView.vFilmName.text = item.title
             Picasso.get()
                 .load(item.posterPath)
+                .placeholder(R.drawable.ic_baseline_local_movies_24)
                 .fit()
                 .into(itemView.vFilmImage)
         }

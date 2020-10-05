@@ -39,9 +39,7 @@ class FilmInfoFragment : Fragment() {
             vProgressBar.hide()
             when (it) {
                 is ResultRequest.Success -> showFilmInfo(it.data)
-                is ResultRequest.Error -> {
-                    Timber.e(it.throwable)
-                }
+                is ResultRequest.Error -> Timber.e(it.throwable)
                 ResultRequest.Loading -> vProgressBar.show()
             }
         }
@@ -56,6 +54,7 @@ class FilmInfoFragment : Fragment() {
         vFilmName.text = film.title
         Picasso.get()
             .load(film.posterPath)
+            .placeholder(R.drawable.ic_baseline_local_movies_24)
             .fit()
             .into(vFilmImage)
         vFilmYear.text = film.year

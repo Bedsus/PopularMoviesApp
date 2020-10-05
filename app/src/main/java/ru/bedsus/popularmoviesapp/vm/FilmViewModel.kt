@@ -1,8 +1,6 @@
 package ru.bedsus.popularmoviesapp.vm
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -50,5 +48,10 @@ class FilmViewModel(
                     _filmInfoLiveData.value = ResultRequest.Error(it)
                 })
         )
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun cleanDisposables() {
+        compositeDisposable.clear()
     }
 }

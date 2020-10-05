@@ -3,7 +3,7 @@ package ru.bedsus.data.room.mapper
 import ru.bedsus.data.room.model.FilmEntity
 import ru.bedsus.domain.model.Film
 
-fun FilmEntity.fromEntity(): Film {
+internal fun FilmEntity.fromEntity(): Film {
     return Film(
         id = id,
         title = title,
@@ -18,7 +18,7 @@ fun FilmEntity.fromEntity(): Film {
     )
 }
 
-fun Film.toEntity(): FilmEntity {
+internal fun Film.toEntity(): FilmEntity {
     return FilmEntity(
         id = id,
         title = title,

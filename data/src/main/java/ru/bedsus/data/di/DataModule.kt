@@ -6,8 +6,6 @@ import org.koin.dsl.module
 import ru.bedsus.data.network.NetworkService
 import ru.bedsus.data.network.endpoint.FilmApiService
 import ru.bedsus.data.network.repository.FilmApiRepositoryImpl
-import ru.bedsus.data.resource.DataResource
-import ru.bedsus.data.resource.DataResourceImpl
 import ru.bedsus.data.room.DatabaseManager
 import ru.bedsus.data.room.dao.FilmDao
 import ru.bedsus.data.room.repository.CacheTimeRepositoryImpl
@@ -17,15 +15,14 @@ import ru.bedsus.domain.repository.FilmApiRepository
 import ru.bedsus.domain.repository.FilmCacheRepository
 
 val dataModule = module {
-    single<DataResource> { DataResourceImpl(get()) }
 
     // network
     single { NetworkService(get()) }
     single { provideFilmApiService(get()) }
-    single<FilmApiRepository> { FilmApiRepositoryImpl(get(), get()) }
+    single<FilmApiRepository> { FilmApiRepositoryImpl(get()) }
 
     // db
-    single { DatabaseManager(get(), get()) }
+    single { DatabaseManager(get()) }
     single { provideFilmDao(get()) }
     single<FilmCacheRepository> { FilmCacheRepositoryImpl(get()) }
 

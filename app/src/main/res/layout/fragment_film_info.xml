@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -15,7 +16,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="200dp"
         android:fitsSystemWindows="true" >
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -24,6 +25,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:title=" "
+            app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:expandedTitleMarginStart="28dp"
             app:expandedTitleMarginBottom="28dp"
@@ -45,13 +47,14 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/vToolbar"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:theme="@style/ThemeOverlay.MaterialComponents.Dark"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="0dp"
                 android:background="@android:color/transparent"
                 app:layout_collapseMode="pin"
-                app:navigationIcon="@drawable/ic_arrow_back"
+                app:navigationIcon="@drawable/ic_elevate_arrow_back"
                 app:title="@string/app_name" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -65,14 +68,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            xmlns:tools="http://schemas.android.com/tools">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/vFilmImage"
                 android:layout_width="100dp"
                 android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="@string/app_name"/>
@@ -80,7 +83,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/vFilmImage"
@@ -137,6 +142,8 @@
                 android:id="@+id/vOverviewText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
